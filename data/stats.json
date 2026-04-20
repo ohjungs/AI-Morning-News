@@ -34,6 +34,18 @@
         "karpathy_medium"
       ],
       "timestamp": "2026-04-20T12:53:57.217988"
+    },
+    {
+      "date": "2026-04-20",
+      "total_fetched": 95,
+      "failed_sources": [
+        "anthropic_blog",
+        "openai_blog",
+        "meta_ai",
+        "huggingface_blog",
+        "karpathy_medium"
+      ],
+      "timestamp": "2026-04-20T14:03:33.074760"
     }
   ]
 }

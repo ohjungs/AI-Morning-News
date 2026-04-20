@@ -9,16 +9,11 @@ from dateutil import parser as dateparser
 
 BASE_DIR = Path(__file__).parent.parent
 DATA_DIR = BASE_DIR / "data"
-LOG_DIR = BASE_DIR / "logs"
+
+from utils.logger import setup_logger
+log = setup_logger(__name__)
 
 today_str = datetime.now().strftime("%Y-%m-%d")
-logging.basicConfig(
-    filename=LOG_DIR / f"{today_str}.log",
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s",
-    encoding="utf-8"
-)
-log = logging.getLogger(__name__)
 
 TIMEOUT = 10
 MAX_PER_SOURCE = 10
@@ -36,7 +31,7 @@ def parse_date(entry):
                 return dateparser.parse(val)
             except Exception:
                 pass
-    return datetime.now(timezone.utc)
+    return None  # 날짜 불명 기사는 None으로 처리 (최신 기사로 위장 방지)
 
 def fetch_rss(source: dict) -> list:
     items = []
@@ -67,6 +62,7 @@ def fetch_rss(source: dict) -> list:
                 if pub_aware < cutoff:
                     log.debug(f"오래된 기사 제외 ({published.date()}): {title}")
                     continue
+            # 날짜 없는 기사는 허용하되 published=None 으로 저장
 
             items.append({
                 "id": source["id"],
@@ -76,7 +72,7 @@ def fetch_rss(source: dict) -> list:
                 "title": title,
                 "url": link,
                 "summary_raw": summary[:500],
-                "published": published.isoformat() if published else None
+                "published": published.isoformat() if published else ""
             })
 
         log.info(f"[{source['id']}] {len(items)}건 수집 완료")

@@ -363,6 +363,14 @@
     {
       "url": "https://krebsonsecurity.com/2026/04/patch-tuesday-april-2026-edition/",
       "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://blog.andymasley.com/p/contra-benn-jordan-data-center-and",
+      "date": "2026-04-20T05:03:33.412671+00:00"
+    },
+    {
+      "url": "https://thehackernews.com/2026/04/vercel-breach-tied-to-context-ai-hack.html",
+      "date": "2026-04-20T05:03:33.412671+00:00"
     }
   ],
   "seen_titles": [
@@ -729,6 +737,14 @@
     {
       "title": "Patch Tuesday, April 2026 Edition",
       "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Contra Benn Jordan, data center (and all) sub-audible infrasound issues are fake",
+      "date": "2026-04-20T05:03:33.412671+00:00"
+    },
+    {
+      "title": "Vercel Breach Tied to Context AI Hack Exposes Limited Customer Credentials",
+      "date": "2026-04-20T05:03:33.412671+00:00"
     }
   ]
 }

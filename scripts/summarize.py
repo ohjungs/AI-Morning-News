@@ -10,9 +10,12 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).parent.parent
 DATA_DIR = BASE_DIR / "data"
-log = logging.getLogger(__name__)
+sys.path.insert(0, str(Path(__file__).parent))
 
-MAX_ITEMS = 30
+from utils.logger import setup_logger
+log = setup_logger(__name__)
+
+MAX_ITEMS = 50  # 30 → 50으로 확장
 RETRY_COUNT = 2
 RETRY_DELAY = 3
 
@@ -63,11 +66,13 @@ def call_claude_cli(prompt: str, model: str = None) -> str:
         claude_cmd = find_claude_cmd()
     except FileNotFoundError as e:
         log.error(str(e))
-        raise
+        return ""  # CLI 없으면 빈 문자열 → 파이프라인 중단 없이 계속 진행
 
     for attempt in range(RETRY_COUNT):
         tmp_path = None
         try:
+            if not claude_cmd:
+                raise FileNotFoundError("Claude CLI를 찾을 수 없습니다. 'npm install -g @anthropic-ai/claude-code' 실행 후 재시도.")
             # 임시 파일에 프롬프트 저장
             with tempfile.NamedTemporaryFile(
                 mode="w", suffix=".txt", delete=False, encoding="utf-8"

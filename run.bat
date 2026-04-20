@@ -9,23 +9,23 @@ echo ========================================
 set PYTHON=python
 set SCRIPTS=scripts
 
-echo [1/7] 뉴스 수집 중...
+echo [1/8] 뉴스 수집 중...
 %PYTHON% %SCRIPTS%\fetch_news.py
 if errorlevel 1 ( echo [ERROR] 뉴스 수집 실패 & goto :error )
 
-echo [2/7] 중복 제거 중...
+echo [2/8] 중복 제거 중...
 %PYTHON% %SCRIPTS%\deduplicate.py
 if errorlevel 1 ( echo [ERROR] 중복 제거 실패 & goto :error )
 
-echo [3/7] 필터링 중...
+echo [3/8] 필터링 중...
 %PYTHON% %SCRIPTS%\filter.py
 if errorlevel 1 ( echo [ERROR] 필터링 실패 & goto :error )
 
-echo [4/7] 랭킹 산정 중...
+echo [4/8] 랭킹 산정 중...
 %PYTHON% %SCRIPTS%\rank.py
 if errorlevel 1 ( echo [ERROR] 랭킹 실패 & goto :error )
 
-echo [5/7] 요약 생성 중 (Claude CLI)...
+echo [5/8] 요약 생성 중 (Claude Haiku)...
 %PYTHON% %SCRIPTS%\summarize.py
 if errorlevel 1 ( echo [ERROR] 요약 실패 & goto :error )
 
@@ -45,12 +45,8 @@ echo ========================================
 echo   완료! 브라우저 열기...
 echo ========================================
 
-for /f "tokens=1-3 delims=/ " %%a in ("%date%") do (
-  set YY=%%a
-  set MM=%%b
-  set DD=%%c
-)
-set TODAY=%YY%-%MM%-%DD%
+:: 날짜를 Python으로 구해서 로케일 의존성 제거
+for /f %%i in ('%PYTHON% -c "import datetime; print(datetime.date.today())"') do set TODAY=%%i
 start "" "output\%TODAY%.html"
 goto :end
 

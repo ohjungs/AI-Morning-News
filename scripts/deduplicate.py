@@ -1,12 +1,16 @@
 import json
 import logging
+import sys
 from pathlib import Path
 from difflib import SequenceMatcher
 from datetime import datetime, timezone, timedelta
 
 BASE_DIR = Path(__file__).parent.parent
 DATA_DIR = BASE_DIR / "data"
-log = logging.getLogger(__name__)
+sys.path.insert(0, str(Path(__file__).parent))
+
+from utils.logger import setup_logger
+log = setup_logger(__name__)
 
 TITLE_SIMILARITY_THRESHOLD = 0.85
 HISTORY_DAYS = 7  # 7일 이내 히스토리만 유지

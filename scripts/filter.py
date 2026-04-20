@@ -1,12 +1,16 @@
 import json
 import logging
 import re
+import sys
 from pathlib import Path
 from urllib.parse import urlparse
 
 BASE_DIR = Path(__file__).parent.parent
 DATA_DIR = BASE_DIR / "data"
-log = logging.getLogger(__name__)
+sys.path.insert(0, str(Path(__file__).parent))
+
+from utils.logger import setup_logger
+log = setup_logger(__name__)
 
 MIN_TRUST_SCORE = 6
 

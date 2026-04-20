@@ -7,12 +7,20 @@ import logging
 import tempfile
 import os
 import shutil
+import sys
+import time
 from pathlib import Path
 from datetime import datetime
 
 BASE_DIR = Path(__file__).parent.parent
 DATA_DIR = BASE_DIR / "data"
-log = logging.getLogger(__name__)
+sys.path.insert(0, str(Path(__file__).parent))
+
+from utils.logger import setup_logger
+log = setup_logger(__name__)
+
+RETRY_COUNT = 2
+RETRY_DELAY = 5
 
 ADVISOR_PROMPT = """당신은 AI 산업 전문 애널리스트입니다.
 오늘 수집된 AI 뉴스 {count}건을 분석해 아래 형식으로 반환하세요.
@@ -57,22 +65,36 @@ def load_model_config() -> dict:
 
 def call_claude(prompt: str, model: str) -> str:
     claude_cmd = find_claude_cmd()
-    tmp_path = None
-    try:
-        with tempfile.NamedTemporaryFile(
-            mode="w", suffix=".txt", delete=False, encoding="utf-8"
-        ) as f:
-            f.write(prompt)
-            tmp_path = f.name
 
-        cmd = f'type "{tmp_path}" | "{claude_cmd}" --output-format text --model {model}'
-        result = subprocess.run(
-            cmd, capture_output=True, timeout=180, shell=True
-        )
-        return result.stdout.decode("utf-8", errors="replace").strip()
-    finally:
-        if tmp_path and os.path.exists(tmp_path):
-            os.unlink(tmp_path)
+    for attempt in range(RETRY_COUNT):
+        tmp_path = None
+        try:
+            with tempfile.NamedTemporaryFile(
+                mode="w", suffix=".txt", delete=False, encoding="utf-8"
+            ) as f:
+                f.write(prompt)
+                tmp_path = f.name
+
+            cmd = f'type "{tmp_path}" | "{claude_cmd}" --output-format text --model {model}'
+            result = subprocess.run(
+                cmd, capture_output=True, timeout=180, shell=True
+            )
+            stdout = result.stdout.decode("utf-8", errors="replace").strip()
+            if result.returncode == 0 and stdout:
+                return stdout
+            log.warning(f"Advisor CLI 응답 없음 (시도 {attempt+1}): {result.stderr.decode('utf-8', errors='replace')[:100]}")
+        except subprocess.TimeoutExpired:
+            log.error(f"Advisor 타임아웃 (시도 {attempt+1})")
+        except Exception as e:
+            log.error(f"Advisor 호출 오류 (시도 {attempt+1}): {e}")
+        finally:
+            if tmp_path and os.path.exists(tmp_path):
+                os.unlink(tmp_path)
+
+        if attempt < RETRY_COUNT - 1:
+            time.sleep(RETRY_DELAY)
+
+    return ""
 
 def generate_advisor(items: list) -> dict:
     model_cfg = load_model_config()

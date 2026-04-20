@@ -1,14 +1,18 @@
 import json
 import logging
+import sys
 from datetime import datetime
 from pathlib import Path
-from jinja2 import Environment, FileSystemLoader, Undefined
+from jinja2 import Environment, FileSystemLoader
 
 BASE_DIR = Path(__file__).parent.parent
 DATA_DIR = BASE_DIR / "data"
 TEMPLATE_DIR = BASE_DIR / "templates"
 OUTPUT_DIR = BASE_DIR / "output"
-log = logging.getLogger(__name__)
+sys.path.insert(0, str(Path(__file__).parent))
+
+from utils.logger import setup_logger
+log = setup_logger(__name__)
 
 WEEKDAYS = ["월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"]
 

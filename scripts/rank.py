@@ -1,23 +1,35 @@
 import json
 import logging
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
 BASE_DIR = Path(__file__).parent.parent
 DATA_DIR = BASE_DIR / "data"
-log = logging.getLogger(__name__)
+sys.path.insert(0, str(Path(__file__).parent))
+
+from utils.logger import setup_logger
+log = setup_logger(__name__)
 
 CATEGORY_WEIGHT = {
-    "official": 5,
-    "research": 4,
-    "blog": 3,
-    "news": 2,
-    "influencer": 2
+    "official":   5,
+    "research":   4,
+    "security":   4,   # 보안 이슈는 중요도 높음
+    "blog":       3,
+    "news":       3,
+    "tech":       3,   # 신기술 뉴스
+    "influencer": 2,
 }
 
 HIGH_PRIORITY_KEYWORDS = [
+    # AI
     "GPT-5", "Claude 4", "Gemini", "breakthrough", "release", "launch",
-    "AGI", "safety", "출시", "발표", "공개", "새로운"
+    "AGI", "safety", "출시", "발표", "공개", "새로운",
+    # 신기술
+    "quantum", "chip", "semiconductor", "robot", "space", "반도체", "양자", "로봇",
+    # 보안 이슈
+    "zero-day", "critical", "vulnerability", "breach", "ransomware",
+    "CVE", "exploit", "취약점", "해킹", "랜섬웨어",
 ]
 
 def recency_score(published_str: str) -> float:
