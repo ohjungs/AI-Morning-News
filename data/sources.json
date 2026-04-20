@@ -1,0 +1,187 @@
+{
+  "sources": [
+    {
+      "id": "anthropic_blog",
+      "name": "Anthropic Blog",
+      "category": "official",
+      "url": "https://www.anthropic.com/news",
+      "rss": "https://www.anthropic.com/rss.xml",
+      "trust_score": 10,
+      "active": true
+    },
+    {
+      "id": "openai_blog",
+      "name": "OpenAI Blog",
+      "category": "official",
+      "url": "https://openai.com/blog",
+      "rss": "https://openai.com/blog/rss.xml",
+      "trust_score": 10,
+      "active": true
+    },
+    {
+      "id": "deepmind_blog",
+      "name": "Google DeepMind Blog",
+      "category": "official",
+      "url": "https://deepmind.google/discover/blog/",
+      "rss": "https://deepmind.google/blog/rss.xml",
+      "trust_score": 10,
+      "active": true
+    },
+    {
+      "id": "meta_ai",
+      "name": "Meta AI Blog",
+      "category": "official",
+      "url": "https://ai.meta.com/blog/",
+      "rss": "https://ai.meta.com/blog/feed/",
+      "trust_score": 10,
+      "active": true
+    },
+    {
+      "id": "huggingface_blog",
+      "name": "Hugging Face Blog",
+      "category": "blog",
+      "url": "https://huggingface.co/blog",
+      "rss": "https://huggingface.co/blog/feed.xml",
+      "trust_score": 9,
+      "active": true
+    },
+    {
+      "id": "techcrunch_ai",
+      "name": "TechCrunch AI",
+      "category": "news",
+      "url": "https://techcrunch.com/category/artificial-intelligence/",
+      "rss": "https://techcrunch.com/category/artificial-intelligence/feed/",
+      "trust_score": 8,
+      "active": true
+    },
+    {
+      "id": "theverge_ai",
+      "name": "The Verge AI",
+      "category": "news",
+      "url": "https://www.theverge.com/ai-artificial-intelligence",
+      "rss": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
+      "trust_score": 8,
+      "active": true
+    },
+    {
+      "id": "wired_ai",
+      "name": "Wired AI",
+      "category": "news",
+      "url": "https://www.wired.com/tag/artificial-intelligence/",
+      "rss": "https://www.wired.com/feed/tag/ai/latest/rss",
+      "trust_score": 8,
+      "active": true
+    },
+    {
+      "id": "mit_news_ai",
+      "name": "MIT News - AI",
+      "category": "research",
+      "url": "https://news.mit.edu/topic/artificial-intelligence2",
+      "rss": "https://news.mit.edu/rss/topic/artificial-intelligence2",
+      "trust_score": 9,
+      "active": true
+    },
+    {
+      "id": "karpathy_medium",
+      "name": "Andrej Karpathy",
+      "category": "influencer",
+      "url": "https://karpathy.medium.com/",
+      "rss": "https://karpathy.medium.com/feed",
+      "trust_score": 9,
+      "active": true
+    },
+    {
+      "id": "ars_technica",
+      "name": "Ars Technica",
+      "category": "tech",
+      "url": "https://arstechnica.com/",
+      "rss": "https://feeds.arstechnica.com/arstechnica/index",
+      "trust_score": 9,
+      "active": true
+    },
+    {
+      "id": "ieee_spectrum",
+      "name": "IEEE Spectrum",
+      "category": "tech",
+      "url": "https://spectrum.ieee.org/",
+      "rss": "https://spectrum.ieee.org/feeds/feed.rss",
+      "trust_score": 9,
+      "active": true
+    },
+    {
+      "id": "hacker_news_top",
+      "name": "Hacker News",
+      "category": "tech",
+      "url": "https://news.ycombinator.com/",
+      "rss": "https://hnrss.org/frontpage",
+      "trust_score": 7,
+      "active": true
+    },
+    {
+      "id": "theverge_tech",
+      "name": "The Verge Tech",
+      "category": "tech",
+      "url": "https://www.theverge.com/tech",
+      "rss": "https://www.theverge.com/rss/tech/index.xml",
+      "trust_score": 8,
+      "active": true
+    },
+    {
+      "id": "hackernews_security",
+      "name": "The Hacker News",
+      "category": "security",
+      "url": "https://thehackernews.com/",
+      "rss": "https://feeds.feedburner.com/TheHackersNews",
+      "trust_score": 9,
+      "active": true
+    },
+    {
+      "id": "bleepingcomputer",
+      "name": "Bleeping Computer",
+      "category": "security",
+      "url": "https://www.bleepingcomputer.com/",
+      "rss": "https://www.bleepingcomputer.com/feed/",
+      "trust_score": 9,
+      "active": true
+    },
+    {
+      "id": "krebs_security",
+      "name": "Krebs on Security",
+      "category": "security",
+      "url": "https://krebsonsecurity.com/",
+      "rss": "https://krebsonsecurity.com/feed/",
+      "trust_score": 9,
+      "active": true
+    },
+    {
+      "id": "cve_mitre",
+      "name": "CVE Announcements",
+      "category": "security",
+      "url": "https://www.cvedetails.com/",
+      "rss": "https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=critical",
+      "trust_score": 10,
+      "active": false
+    }
+  ],
+  "blocked_domains": [
+    "spam-news.com"
+  ],
+  "keywords_ai": [
+    "AI", "artificial intelligence", "machine learning", "LLM", "GPT",
+    "Claude", "neural network", "deep learning", "model", "AGI",
+    "인공지능", "머신러닝", "딥러닝", "챗봇", "chatbot"
+  ],
+  "keywords_tech": [
+    "chip", "semiconductor", "quantum", "robot", "drone", "biotech",
+    "battery", "EV", "space", "cloud", "5G", "6G", "AR", "VR",
+    "반도체", "양자", "로봇", "배터리", "우주", "클라우드"
+  ],
+  "keywords_security": [
+    "vulnerability", "breach", "exploit", "ransomware", "CVE", "zero-day",
+    "hack", "malware", "phishing", "DDoS", "data leak", "patch",
+    "취약점", "해킹", "랜섬웨어", "보안", "침해", "악성코드"
+  ],
+  "keywords_blocked": [
+    "casino", "crypto pump", "NFT drop", "giveaway scam"
+  ]
+}

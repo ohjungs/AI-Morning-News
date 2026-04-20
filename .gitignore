@@ -1,0 +1,34 @@
+# 출력 파일 (날짜별 생성)
+output/
+
+# 로그
+logs/
+
+# 수집/가공 중간 데이터 (매일 갱신)
+data/fetched.json
+data/deduped.json
+data/filtered.json
+data/ranked.json
+data/summarized.json
+data/advisor.json
+
+# 히스토리/통계는 추적 (중복 제거 기준)
+!data/history.json
+!data/stats.json
+!data/sources.json
+!data/model_config.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# 환경 변수
+.env
+
+# OS
+.DS_Store
+Thumbs.db

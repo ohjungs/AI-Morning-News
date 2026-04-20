@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko" id="root">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Morning News — {{ date }}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0e0e10;
+  --s1:#161618;
+  --s2:#1e1e22;
+  --b:#2a2a30;
+  --b2:#38383f;
+  --tx:#e2e2ea;
+  --tm:#8888a0;
+  --tc:#55556a;
+  --ac:#c8b8ff;
+  --ac2:#7ee8d4;
+  --high:#ff7070;
+  --med:#ffd06b;
+  --low:#6bd98a;
+  --mono:'IBM Plex Mono',monospace;
+  --sans:'Noto Sans KR',sans-serif;
+}
+[data-theme="light"]{
+  --bg:#f5f5f0;
+  --s1:#ffffff;
+  --s2:#f0f0ec;
+  --b:#d8d8d0;
+  --b2:#c0c0b8;
+  --tx:#1a1a1e;
+  --tm:#555560;
+  --tc:#888890;
+  --ac:#5a4fcf;
+  --ac2:#0f9880;
+}
+body{background:var(--bg);color:var(--tx);font-family:var(--sans);font-weight:400;line-height:1.7;min-height:100vh;transition:background .2s,color .2s}
+header{background:var(--s1);border-bottom:0.5px solid var(--b);padding:18px 28px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.logo{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--ac);letter-spacing:2px}
+.logo span{color:var(--tm);font-weight:400}
+.hdate{font-family:var(--mono);font-size:11px;color:var(--tc);margin-top:3px}
+.hright{display:flex;align-items:center;gap:10px}
+.badge{font-family:var(--mono);font-size:10px;color:var(--tm);background:var(--s2);border:0.5px solid var(--b);padding:3px 10px;border-radius:20px}
+.theme-btn{background:var(--s2);border:0.5px solid var(--b);color:var(--tm);padding:5px 12px;border-radius:6px;cursor:pointer;font-size:12px;font-family:var(--mono);transition:border-color .2s,color .2s}
+.theme-btn:hover{border-color:var(--ac);color:var(--ac)}
+.tabs{background:var(--s1);border-bottom:0.5px solid var(--b);padding:0 28px;display:flex;gap:0;overflow-x:auto}
+.tab{padding:10px 18px;font-size:12px;font-family:var(--mono);color:var(--tc);border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all .2s;letter-spacing:.5px}
+.tab:hover{color:var(--tm)}
+.tab.on{color:var(--ac);border-bottom-color:var(--ac)}
+.tab .n{font-size:10px;margin-left:4px;background:var(--s2);padding:1px 5px;border-radius:8px;color:var(--tc)}
+main{max-width:860px;margin:0 auto;padding:24px 28px}
+.sec{display:none}.sec.on{display:block}
+.list{display:flex;flex-direction:column;gap:10px}
+.card{background:var(--s1);border:0.5px solid var(--b);border-radius:8px;padding:16px 18px;transition:border-color .2s,opacity .2s;animation:fadeup .3s ease both}
+@keyframes fadeup{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.card:hover{border-color:var(--b2)}
+.card.read{opacity:.38}
+.ctop{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:10px}
+.cmeta{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.src{font-family:var(--mono);font-size:10px;color:var(--ac2);background:rgba(126,232,212,.08);padding:2px 7px;border-radius:3px;letter-spacing:.3px}
+.cat{font-family:var(--mono);font-size:9px;color:var(--tc);background:var(--s2);padding:2px 6px;border-radius:3px;text-transform:uppercase;letter-spacing:.8px}
+.pri{font-family:var(--mono);font-size:9px;font-weight:700;padding:2px 7px;border-radius:3px;letter-spacing:.5px}
+.ph{background:rgba(255,112,112,.12);color:var(--high)}
+.pm{background:rgba(255,208,107,.12);color:var(--med)}
+.pl{background:rgba(107,217,138,.12);color:var(--low)}
+.rbtn{background:none;border:0.5px solid var(--b);color:var(--tc);font-family:var(--mono);font-size:10px;padding:3px 9px;border-radius:4px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .2s}
+.rbtn:hover{border-color:var(--ac);color:var(--ac)}
+.card.read .rbtn{color:var(--ac);border-color:var(--ac)}
+.ctitle{font-size:14px;font-weight:500;margin-bottom:8px;line-height:1.45}
+.ctitle a{color:var(--tx);text-decoration:none;transition:color .2s}
+.ctitle a:hover{color:var(--ac)}
+.csummary{font-size:12px;color:var(--tm);line-height:1.75;white-space:pre-line}
+.cfoot{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:10px;border-top:0.5px solid var(--b)}
+.cdate{font-family:var(--mono);font-size:10px;color:var(--tc)}
+.orig{font-family:var(--mono);font-size:10px;color:var(--ac);text-decoration:none;letter-spacing:.3px;transition:opacity .2s}
+.orig:hover{opacity:.6}
+.empty{text-align:center;color:var(--tc);padding:60px 0;font-size:12px;font-family:var(--mono)}
+footer{text-align:center;padding:28px;color:var(--tc);font-family:var(--mono);font-size:10px;border-top:0.5px solid var(--b);margin-top:32px;letter-spacing:.5px}
+/* Advisor */
+.advisor{background:var(--s1);border:0.5px solid var(--b);border-radius:10px;padding:20px 24px;margin-bottom:20px;position:relative;overflow:hidden}
+.advisor::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--ac),var(--ac2))}
+.adv-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.adv-label{font-family:var(--mono);font-size:10px;color:var(--ac);letter-spacing:2px;font-weight:700}
+.adv-model{font-family:var(--mono);font-size:9px;color:var(--tc);background:var(--s2);padding:2px 8px;border-radius:10px}
+.adv-oneline{font-size:14px;font-weight:500;color:var(--tx);margin-bottom:16px;line-height:1.5;padding:10px 14px;background:var(--s2);border-radius:6px;border-left:3px solid var(--ac)}
+.adv-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+@media(max-width:600px){.adv-grid{grid-template-columns:1fr}}
+.adv-block{background:var(--s2);border-radius:6px;padding:12px 14px}
+.adv-block-title{font-family:var(--mono);font-size:9px;color:var(--tc);letter-spacing:1px;margin-bottom:8px;text-transform:uppercase}
+.trend-item{margin-bottom:8px;padding-bottom:8px;border-bottom:0.5px solid var(--b)}
+.trend-item:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.trend-rank{font-family:var(--mono);font-size:9px;color:var(--ac);font-weight:700;margin-right:5px}
+.trend-theme{font-size:12px;font-weight:500;color:var(--tx)}
+.trend-desc{font-size:11px;color:var(--tm);margin-top:3px;line-height:1.55}
+.adv-spotlight{font-size:12px;color:var(--tx)}
+.adv-spotlight strong{color:var(--ac2)}
+.adv-watchout{font-size:12px;color:var(--tx);line-height:1.55}
+.adv-sentiment{display:flex;align-items:center;gap:8px}
+.sent-badge{font-family:var(--mono);font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;text-transform:uppercase}
+.sent-bullish{background:rgba(107,217,138,.15);color:var(--low)}
+.sent-bearish{background:rgba(255,112,112,.15);color:var(--high)}
+.sent-neutral{background:rgba(136,136,160,.12);color:var(--tm)}
+.sent-reason{font-size:11px;color:var(--tm)}
+@media(max-width:600px){header,main{padding-left:16px;padding-right:16px}.tabs{padding-left:16px}.logo{font-size:11px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="logo">AI<span>///</span>MORNING<span>///</span>NEWS</div>
+    <div class="hdate">{{ date }} · {{ weekday }} · 08:00 자동 실행</div>
+  </div>
+  <div class="hright">
+    <span class="badge">{{ total }}건</span>
+    <button class="theme-btn" onclick="toggleTheme()">☀ / ☾</button>
+  </div>
+</header>
+
+<div class="tabs">
+  <button class="tab on" onclick="sw('all',this)">ALL <span class="n">{{ total }}</span></button>
+  <button class="tab" onclick="sw('official',this)">OFFICIAL <span class="n">{{ counts.official }}</span></button>
+  <button class="tab" onclick="sw('news',this)">NEWS <span class="n">{{ counts.news }}</span></button>
+  <button class="tab" onclick="sw('tech',this)">TECH <span class="n">{{ counts.tech }}</span></button>
+  <button class="tab" onclick="sw('security',this)">SECURITY <span class="n">{{ counts.security }}</span></button>
+  <button class="tab" onclick="sw('research',this)">RESEARCH <span class="n">{{ counts.research }}</span></button>
+  <button class="tab" onclick="sw('blog',this)">BLOG <span class="n">{{ counts.blog }}</span></button>
+  <button class="tab" onclick="sw('influencer',this)">INFLUENCER <span class="n">{{ counts.influencer }}</span></button>
+</div>
+
+<main>
+{% if advisor and advisor.one_line %}
+<div class="advisor">
+  <div class="adv-header">
+    <span class="adv-label">⬡ ADVISOR</span>
+    <span class="adv-model">{{ advisor.model or '' }}</span>
+  </div>
+  <div class="adv-oneline">{{ advisor.one_line }}</div>
+  <div class="adv-grid">
+    {% if advisor.top_trends %}
+    <div class="adv-block" style="grid-column:1/-1">
+      <div class="adv-block-title">TOP TRENDS</div>
+      {% for t in advisor.top_trends %}
+      <div class="trend-item">
+        <div><span class="trend-rank">#{{ t.rank }}</span><span class="trend-theme">{{ t.theme }}</span></div>
+        <div class="trend-desc">{{ t.desc }}</div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% if advisor.spotlight %}
+    <div class="adv-block">
+      <div class="adv-block-title">SPOTLIGHT</div>
+      <div class="adv-spotlight"><strong>{{ advisor.spotlight.company }}</strong><br>{{ advisor.spotlight.reason }}</div>
+    </div>
+    {% endif %}
+    <div class="adv-block">
+      <div class="adv-block-title">SENTIMENT</div>
+      <div class="adv-sentiment">
+        <span class="sent-badge sent-{{ advisor.sentiment }}">{{ advisor.sentiment }}</span>
+      </div>
+      <div class="sent-reason" style="margin-top:6px">{{ advisor.sentiment_reason }}</div>
+    </div>
+    {% if advisor.watchout %}
+    <div class="adv-block" style="grid-column:1/-1">
+      <div class="adv-block-title">WATCH OUT</div>
+      <div class="adv-watchout">{{ advisor.watchout }}</div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+{% for cat in ['all', 'official', 'news', 'tech', 'security', 'research', 'blog', 'influencer'] %}
+<div class="sec {% if cat == 'all' %}on{% endif %}" id="sec-{{ cat }}">
+  <div class="list">
+  {% set ns = namespace(found=false) %}
+  {% for item in items %}
+    {% if cat == 'all' or item.category == cat %}
+    {% set ns.found = true %}
+    <div class="card" id="card-{{ loop.index }}">
+      <div class="ctop">
+        <div class="cmeta">
+          <span class="src">{{ item.source_name }}</span>
+          <span class="cat">{{ item.category }}</span>
+          <span class="pri {% if item.priority == 'high' %}ph{% elif item.priority == 'medium' %}pm{% else %}pl{% endif %}">{{ item.priority | upper }}</span>
+        </div>
+        <button class="rbtn" onclick="rd('card-{{ loop.index }}',this)">읽음</button>
+      </div>
+      <div class="ctitle">
+        <a href="{{ item.url }}" target="_blank" rel="noopener">{{ item.title_ko if item.title_ko else item.title }}</a>
+      </div>
+      <div class="csummary">{{ item.summary_ko }}</div>
+      <div class="cfoot">
+        <span class="cdate">{{ item.published[:10] if item.published else '' }}</span>
+        <a class="orig" href="{{ item.url }}" target="_blank" rel="noopener">원문 보기 →</a>
+      </div>
+    </div>
+    {% endif %}
+  {% endfor %}
+  {% if not ns.found %}
+    <div class="empty">해당 카테고리의 뉴스가 없습니다.</div>
+  {% endif %}
+  </div>
+</div>
+{% endfor %}
+</main>
+
+<footer>MORNING·NEWS · AUTO·GENERATED · {{ date }} · POWERED·BY·CLAUDE·CODE</footer>
+
+<script>
+function sw(cat,el){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
+  el.classList.add('on');
+  document.getElementById('sec-'+cat).classList.add('on');
+}
+function rd(id,btn){
+  const c=document.getElementById(id);
+  c.classList.toggle('read');
+  btn.textContent=c.classList.contains('read')?'읽음 ✓':'읽음';
+  try{
+    const ids=[];
+    document.querySelectorAll('.card.read').forEach(x=>ids.push(x.id));
+    localStorage.setItem('read_{{ date }}',JSON.stringify(ids));
+  }catch(e){}
+}
+function toggleTheme(){
+  const r=document.getElementById('root');
+  r.dataset.theme=r.dataset.theme==='light'?'dark':'light';
+  try{localStorage.setItem('theme',r.dataset.theme);}catch(e){}
+}
+(function(){
+  try{
+    const t=localStorage.getItem('theme');
+    if(t) document.getElementById('root').dataset.theme=t;
+    const saved=localStorage.getItem('read_{{ date }}');
+    if(saved) JSON.parse(saved).forEach(id=>{
+      const c=document.getElementById(id);
+      if(c){c.classList.add('read');const b=c.querySelector('.rbtn');if(b)b.textContent='읽음 ✓';}
+    });
+  }catch(e){}
+})();
+</script>
+</body>
+</html>

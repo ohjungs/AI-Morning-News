@@ -1,0 +1,39 @@
+{
+  "runs": [
+    {
+      "date": "2026-04-20",
+      "total_fetched": 58,
+      "failed_sources": [
+        "anthropic_blog",
+        "openai_blog",
+        "meta_ai",
+        "huggingface_blog"
+      ],
+      "timestamp": "2026-04-20T12:15:03.592268"
+    },
+    {
+      "date": "2026-04-20",
+      "total_fetched": 36,
+      "failed_sources": [
+        "anthropic_blog",
+        "openai_blog",
+        "meta_ai",
+        "huggingface_blog",
+        "karpathy_medium"
+      ],
+      "timestamp": "2026-04-20T12:22:42.461762"
+    },
+    {
+      "date": "2026-04-20",
+      "total_fetched": 95,
+      "failed_sources": [
+        "anthropic_blog",
+        "openai_blog",
+        "meta_ai",
+        "huggingface_blog",
+        "karpathy_medium"
+      ],
+      "timestamp": "2026-04-20T12:53:57.217988"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(schedule)",
+      "Skill(schedule:*)",
+      "mcp__scheduled-tasks__create_scheduled_task",
+      "Bash(python scripts/fetch_news.py)",
+      "Bash(pip install:*)",
+      "Bash(python scripts/deduplicate.py)",
+      "Bash(python scripts/filter.py)",
+      "Bash(python scripts/rank.py)",
+      "Bash(python scripts/summarize.py)",
+      "Bash(where claude:*)",
+      "Bash(where claude.exe)",
+      "Bash(npx claude:*)",
+      "Bash(python scripts/render.py)",
+      "Bash(python scripts/to_pdf.py)",
+      "Bash(start \"\" \"D:\\\\OHJEONG\\\\morning-news\\\\morning-news\\\\output\\\\2026-04-20.html\")",
+      "Bash(python -c \"import anthropic; print\\(anthropic.__version__\\)\")",
+      "Bash(python -c \"import json; data={'seen_urls':[],'seen_titles':[]}; open\\('D:/OHJEONG/morning-news/morning-news/data/history.json','w',encoding='utf-8'\\).write\\(json.dumps\\(data, ensure_ascii=False, indent=2\\)\\)\")",
+      "Bash(python -c ':*)",
+      "Bash(start \"\" \"output\\\\2026-04-20.html\")",
+      "Bash(python scripts/advisor.py)"
+    ]
+  }
+}

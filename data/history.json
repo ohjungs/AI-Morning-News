@@ -1,0 +1,734 @@
+{
+  "seen_urls": [
+    {
+      "url": "https://deepmind.google/blog/gemini-3-1-flash-tts-the-next-generation-of-expressive-ai-speech/",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://deepmind.google/blog/gemini-robotics-er-1-6/",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://techcrunch.com/2026/04/19/openais-existential-questions/",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://techcrunch.com/2026/04/19/the-12-month-window/",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://techcrunch.com/2026/04/19/palantir-posts-mini-manifesto-denouncing-regressive-and-harmful-cultures/",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://techcrunch.com/2026/04/19/techcrunch-mobility-uber-enters-its-assetmaxxing-era/",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://techcrunch.com/2026/04/18/tesla-brings-its-robotaxi-service-to-dallas-and-houston/",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://techcrunch.com/2026/04/18/ai-chip-startup-cerebras-files-for-ipo/",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://techcrunch.com/2026/04/18/anthropics-relationship-with-the-trump-administration-seems-to-be-thawing/",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://techcrunch.com/2026/04/18/the-app-store-is-booming-again-and-ai-may-be-why/",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://techcrunch.com/2026/04/17/sam-altmans-project-world-looks-to-scale-its-human-verification-empire-first-stop-tinder/",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://techcrunch.com/2026/04/17/kevin-weil-and-bill-peebles-exit-openai-as-company-continues-to-shed-side-quests/",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://www.theverge.com/tech/914723/vercel-hacked",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://www.theverge.com/ai-artificial-intelligence/914672/the-ram-shortage-could-last-years",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://www.theverge.com/ai-artificial-intelligence/914463/openai-sora-bill-peebles-kevin-weil-leaving-departing",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://www.theverge.com/ai-artificial-intelligence/914385/world-id-tinder-identity-verifying-orb",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://www.theverge.com/ai-artificial-intelligence/914229/tides-turning-anthropic-trump-administration-cybersecurity-mythos-preview",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://www.theverge.com/gadgets/913981/poetry-camera-ai-hands-on",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://www.theverge.com/ai-artificial-intelligence/913928/dairy-queen-ai-drive-thru-presto",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://www.theverge.com/podcast/913792/ai-divide-sam-altman-vergecast",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://www.theverge.com/ai-artificial-intelligence/913034/openai-codex-updates-use-macos",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://www.theverge.com/tech/913109/google-ai-mode-tabs-sources",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://www.wired.com/story/security-news-this-week-it-takes-2-minutes-to-hack-the-eus-new-age-verification-app/",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://www.wired.com/story/schematik-is-cursor-for-hardware-anthropic-wants-in-on-it/",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://www.wired.com/story/openai-executive-kevin-weil-is-leaving-the-company/",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://www.wired.com/story/gazing-into-sam-altmans-orb-now-proves-youre-human-on-tinder/",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://www.wired.com/story/backchannel-the-problem-with-letting-ai-do-the-writing/",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://www.wired.com/story/musk-v-altman-trial-openai-xai/",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://www.wired.com/story/the-uk-launches-its-dollar675-million-sovereign-ai-fund/",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://www.wired.com/story/google-ai-mode-update-tries-to-kill-tab-hopping-in-chrome/",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://www.wired.com/story/anthropic-plots-major-london-expansion/",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://www.wired.com/story/this-beanie-is-designed-to-read-your-thoughts/",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://news.mit.edu/2026/jacob-andreas-brett-mcguire-edgerton-award-winners-0417",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://news.mit.edu/2026/bringing-ai-driven-protein-design-tools-everywhere-0417",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://news.mit.edu/2026/human-machine-teaming-dives-underwater-0414",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://news.mit.edu/2026/qa-mit-shass-and-future-of-education-age-ai-0414",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "url": "https://arstechnica.com/space/2026/04/errant-upper-stage-spoils-blue-origins-success-in-reusing-new-glenn-booster/",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://arstechnica.com/science/2026/04/ive-fired-one-of-americas-most-powerful-lasers-heres-what-a-shot-day-looks-like/",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://arstechnica.com/science/2026/04/great-white-sharks-are-overheating/",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://arstechnica.com/security/2026/04/russia-friendly-exchange-says-western-special-service-behind-15-million-cyberattack/",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://arstechnica.com/tech-policy/2026/04/man-with-ihackedthegovernment-instagram-account-tells-judge-i-made-a-mistake/",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://arstechnica.com/health/2026/04/trump-picks-qualified-normal-health-leader-to-head-cdc-experts-still-cautious/",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://arstechnica.com/cars/2026/04/25000-buys-plenty-of-used-evs-here-are-some-options/",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://arstechnica.com/ai/2026/04/construction-delays-hit-40-of-us-data-centers-planned-for-2026/",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://arstechnica.com/gadgets/2026/04/amazon-wont-release-fire-sticks-that-support-sideloading-anymore/",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://arstechnica.com/culture/2026/04/ridley-scotts-post-apocalyptic-the-dog-stars-drops-first-trailer/",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://spectrum.ieee.org/francis-bacon-scientific-method",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://content.knowledgehub.wiley.com/efficient-design-and-simulation-of-lpda-fed-parabolic-reflector-antennas/",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://spectrum.ieee.org/ieee-entrepreneurship-hardware-startups-investors",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://spectrum.ieee.org/iran-internet-blackout-satellite-tv",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://spectrum.ieee.org/quantum-safe-crypto",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://spectrum.ieee.org/openai-engineer-sarang-gupta",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://spectrum.ieee.org/bci-user-experience",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://spectrum.ieee.org/soft-photonics",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://www.bbc.com/news/articles/cge0grppe3po",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://simonwillison.net/2026/Apr/20/claude-token-counts/",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://juanpabloaj.com/2026/04/16/a-lightweight-way-to-make-agents-talk-without-paying-for-api-usage/",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://github.com/shivampkumar/trellis-mac",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://github.com/microsoft/sudo",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://www.swiss-ai.org",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://mxmap.ch/",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://ashley.rolfmore.com/stop-trying-to-engineer-your-way-out-of-listening-to-people/",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://github.com/navid-m/chip8emu",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://www.sciencedetective.org/scientific-datasets-are-riddled-with-copy-paste-errors/",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://www.theverge.com/tech/914085/keychron-q1-v5-ultra-8k-zmk-mechanical-keyboards-review",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://www.theverge.com/gadgets/912620/cheap-gadgets-tech-under-50-tools-headphones-fitness-trackers",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://www.theverge.com/tech/908962/dyson-hushjet-mini-cool-personal-handheld-fan-hands-on",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://www.theverge.com/tech/914429/the-ai-apps-are-coming-for-your-pc",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://www.theverge.com/report/914157/prediction-markets-news-outlet-ethics-policy-propublica-kalshi-polymarket",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://www.theverge.com/tech/912286/our-new-favorite-budget-phones",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://thehackernews.com/2026/04/webinar-find-and-eliminate-orphaned-non.html",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://thehackernews.com/2026/04/1374m-hack-shuts-down-sanctioned-grinex.html",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://thehackernews.com/2026/04/mirai-variant-nexcorium-exploits-cve.html",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://thehackernews.com/2026/04/three-microsoft-defender-zero-days.html",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://thehackernews.com/2026/04/google-blocks-83b-policy-violating-ads.html",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://thehackernews.com/2026/04/nist-limits-cve-enrichment-after-263.html",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://thehackernews.com/2026/04/operation-poweroff-seizes-53-ddos.html",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://thehackernews.com/2026/04/apache-activemq-cve-2026-34197-added-to.html",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://thehackernews.com/2026/04/newly-discovered-powmix-botnet-hits.html",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://thehackernews.com/2026/04/threatsday-bulletin-17-year-old-excel.html",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://www.bleepingcomputer.com/news/security/vercel-confirms-breach-as-hackers-claim-to-be-selling-stolen-data/",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://www.bleepingcomputer.com/news/security/apple-account-change-alerts-abused-to-send-phishing-emails/",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://www.bleepingcomputer.com/news/security/nist-to-stop-rating-non-priority-flaws-due-to-volume-increase/",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://www.bleepingcomputer.com/news/security/critical-flaw-in-protobuf-library-enables-javascript-code-execution/",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-teams-right-click-paste-broken-by-edge-update-bug/",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://www.bleepingcomputer.com/news/security/nakivo-v112-ransomware-defense-faster-replication-vsphere-9-and-proxmox-ve-90-support/",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://www.bleepingcomputer.com/news/security/payouts-king-ransomware-uses-qemu-vms-to-bypass-endpoint-security/",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://www.bleepingcomputer.com/news/security/grinex-exchange-blames-western-intelligence-for-137m-crypto-hack/",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://www.bleepingcomputer.com/news/security/inside-an-underground-guide-how-threat-actors-vet-stolen-credit-card-shops/",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://www.bleepingcomputer.com/news/security/webinar-from-phishing-to-fallout-why-msps-must-rethink-both-security-and-recovery/",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "url": "https://krebsonsecurity.com/2026/04/patch-tuesday-april-2026-edition/",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    }
+  ],
+  "seen_titles": [
+    {
+      "title": "Gemini 3.1 Flash TTS: the next generation of expressive AI speech",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "Gemini Robotics-ER 1.6: Powering real-world robotics tasks through enhanced embodied reasoning",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "OpenAI’s existential questions",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "The 12-month window",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "Palantir posts mini-manifesto denouncing inclusivity and ‘regressive’ cultures",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "TechCrunch Mobility: Uber enters its assetmaxxing era",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "Tesla brings its robotaxi service to Dallas and Houston",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "AI chip startup Cerebras files for IPO",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "Anthropic’s relationship with the Trump administration seems to be thawing",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "The App Store is booming again, and AI may be why",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "Sam Altman’s project World looks to scale its human verification empire. First stop: Tinder.",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "Kevin Weil and Bill Peebles exit OpenAI as company continues to shed ‘side quests’",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "Cloud development platform Vercel was hacked",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "The RAM shortage could last years",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "OpenAI’s former Sora boss is leaving",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "Should you stare into Sam Altman&#8217;s orb before your next date?",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "Anthropic’s new cybersecurity model could get it back in the government’s good graces",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "This charming gadget writes bad AI poetry",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "Dairy Queen is putting an AI chatbot in its drive-thrus",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "The ‘AI is inevitable’ trap",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "OpenAI’s big Codex update is a direct shot at Claude Code",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "Google’s AI Mode update lets you open links without leaving the page",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "It Takes 2 Minutes to Hack the EU’s New Age-Verification App",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "Schematik Is ‘Cursor for Hardware.’ Anthropic Wants In",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "OpenAI Executive Kevin Weil Is Leaving the Company",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "Gazing Into Sam Altman’s Orb Now Proves You’re Human on Tinder",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "AI Drafting My Stories? Over My Dead Body",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "Musk v. Altman Is a Battle for OpenAI’s Soul",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "The UK Launches Its $675 Million Sovereign AI Fund",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "Google's AI Mode Update Tries to Kill Tab Hopping in Chrome",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "Anthropic Plots Major London Expansion",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "This Beanie Is Designed to Read Your Thoughts",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "Jacob Andreas and Brett McGuire named Edgerton Award winners",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "Bringing AI-driven protein-design tools to biologists everywhere",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "Human-machine teaming dives underwater",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "Q&A: MIT SHASS and the future of education in the age of AI",
+      "date": "2026-04-20T03:22:43.105985+00:00"
+    },
+    {
+      "title": "Blue Origin's rocket reuse achievement marred by upper stage failure",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "I’ve fired one of America’s most powerful lasers—here’s what a shot day looks like",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Great white sharks are overheating",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "US-sanctioned currency exchange says $15 million heist done by \"unfriendly states\"",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Man with @ihackedthegovernment Instagram account tells judge, “I made a mistake\"",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Trump picks qualified, normal health leader to head CDC; experts still cautious",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "$25,000 buys plenty of used EVs: Here are some options",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Satellite and drone images reveal big delays in US data center construction",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Amazon won’t release Fire Sticks that support sideloading anymore",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Ridley Scott's post-apocalyptic The Dog Stars drops first trailer",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "How Engineers Kick-Started the Scientific Method",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Designing Broadband LPDA-Fed Reflector Antennas With Full-Wave EM Simulation",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "IEEE Entrepreneurship Connects Hardware Startups With Investors",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Stealth Signals Are Bypassing Iran’s Internet Blackout",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Crypto Faces Increased Threat From Quantum Attacks",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Sarang Gupta Builds AI Systems With Real-World Impact",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "What It’s Like to Live With an Experimental Brain Implant",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Squishy Photonic Switches Promise Fast Low-Power Logic",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "The insider trading suspicions looming over Trump's presidency",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Claude Token Counter, now with model comparisons",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Show HN: A lightweight way to make agents talk without paying for API usage",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Show HN: TRELLIS.2 image-to-3D running on Mac Silicon – no Nvidia GPU needed",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Sudo for Windows",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Swiss AI Initiative (2023)",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "2,100 Swiss municipalities showing which provider handles their official email",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Stop trying to engineer your way out of listening to people",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "I wrote a CHIP-8 emulator in my own programming language",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Scientific datasets are riddled with copy-paste errors",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Marathon battery life makes Keychron’s Ultra 8K keyboards its best yet",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Cheap stuff that doesn’t suck, take 3",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Dyson’s handheld fan is more powerful and louder than I expected",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "The AI apps are coming for your PC",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Betting on the news raises ethical questions for journalists",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Our new favorite budget phones",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "[Webinar] Eliminate Ghost Identities Before They Expose Your Enterprise Data",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "$13.74M Hack Shuts Down Sanctioned Grinex Exchange After Intelligence Claims",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Mirai Variant Nexcorium Exploits CVE-2024-3721 to Hijack TBK DVRs for DDoS Botnet",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Three Microsoft Defender Zero-Days Actively Exploited; Two Still Unpatched",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Google Blocks 8.3B Policy-Violating Ads in 2025, Launches Android 17 Privacy Overhaul",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "NIST Limits CVE Enrichment After 263% Surge in Vulnerability Submissions",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Operation PowerOFF Seizes 53 DDoS Domains, Exposes 3 Million Criminal Accounts",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Apache ActiveMQ CVE-2026-34197 Added to CISA KEV Amid Active Exploitation",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Newly Discovered PowMix Botnet Hits Czech Workers Using Randomized C2 Traffic",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "ThreatsDay Bulletin: Defender 0-Day, SonicWall Brute-Force, 17-Year-Old Excel RCE and 15 More Stories",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Vercel confirms breach as hackers claim to be selling stolen data",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Apple account change alerts abused to send phishing emails",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "NIST to stop rating non-priority flaws due to volume increase",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Critical flaw in Protobuf library enables JavaScript code execution",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Microsoft Teams right-click paste broken by Edge update bug",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "NAKIVO v11.2: Ransomware Defense, Faster Replication, vSphere 9, and Proxmox VE 9.0 Support",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Payouts King ransomware uses QEMU VMs to bypass endpoint security",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Grinex exchange blames \"Western intelligence\" for $13.7M crypto hack",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Inside an Underground Guide: How Threat Actors Vet Stolen Credit Card Shops",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Webinar: From phishing to fallout — Why MSPs must rethink both security and recovery",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    },
+    {
+      "title": "Patch Tuesday, April 2026 Edition",
+      "date": "2026-04-20T03:53:57.643099+00:00"
+    }
+  ]
+}
