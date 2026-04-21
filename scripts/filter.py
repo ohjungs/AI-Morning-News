@@ -1,5 +1,4 @@
 import json
-import logging
 import re
 import sys
 from pathlib import Path
@@ -10,11 +9,12 @@ DATA_DIR = BASE_DIR / "data"
 sys.path.insert(0, str(Path(__file__).parent))
 
 from utils.logger import setup_logger
+from utils.keywords import load_keywords
 log = setup_logger(__name__)
 
 MIN_TRUST_SCORE = 6
 
-# 카테고리별 키워드 매핑 키
+# 카테고리별 키워드 섹션 매핑 (keywords.md 기준)
 CATEGORY_KEYWORD_MAP = {
     "official":   "keywords_ai",
     "news":       "keywords_ai",
@@ -23,6 +23,7 @@ CATEGORY_KEYWORD_MAP = {
     "influencer": "keywords_ai",
     "tech":       "keywords_tech",
     "security":   "keywords_security",
+    "news_kr":    "keywords_kr",
 }
 
 def load_config() -> dict:
@@ -51,14 +52,11 @@ def has_keyword(item: dict, keywords: list) -> bool:
     text = (item.get("title", "") + " " + item.get("summary_raw", "")).lower()
     return any(kw.lower() in text for kw in keywords)
 
-def has_blocked_keyword(item: dict, keywords_blocked: list) -> bool:
-    text = (item.get("title", "") + " " + item.get("summary_raw", "")).lower()
-    return any(kw.lower() in text for kw in keywords_blocked)
-
 def filter_items(items: list) -> list:
     config = load_config()
+    keywords = load_keywords()  # data/keywords.md 에서 로드
     blocked_domains = config.get("blocked_domains", [])
-    keywords_blocked = config.get("keywords_blocked", [])
+    keywords_blocked = keywords.get("keywords_blocked", [])
 
     result = []
     for item in items:
@@ -74,15 +72,14 @@ def filter_items(items: list) -> list:
             log.warning(f"URL 검증 실패: {url}")
             continue
 
-        if has_blocked_keyword(item, keywords_blocked):
+        if has_keyword(item, keywords_blocked):
             log.debug(f"차단 키워드 제거: {item.get('title')}")
             continue
 
-        # 카테고리에 맞는 키워드 목록으로 필터
         kw_key = CATEGORY_KEYWORD_MAP.get(category)
         if kw_key:
-            keywords = config.get(kw_key, [])
-            if keywords and not has_keyword(item, keywords):
+            kw_list = keywords.get(kw_key, [])
+            if kw_list and not has_keyword(item, kw_list):
                 log.debug(f"[{category}] 키워드 미매칭 제거: {item.get('title')}")
                 continue
 

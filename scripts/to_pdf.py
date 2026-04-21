@@ -75,4 +75,4 @@ if __name__ == "__main__":
     if pdf_path:
         print(f"PDF 생성: {pdf_path}")
     else:
-        print("PDF 생략 — HTML 파일로 계속 진행")
+        print("PDF 생략 - HTML 파일로 계속 진행")

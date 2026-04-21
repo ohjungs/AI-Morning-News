@@ -161,27 +161,45 @@
       "rss": "https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=critical",
       "trust_score": 10,
       "active": false
+    },
+    {
+      "id": "zdnet_kr",
+      "name": "ZDNet Korea",
+      "category": "news_kr",
+      "url": "https://zdnet.co.kr/",
+      "rss": "https://zdnet.co.kr/feed",
+      "trust_score": 8,
+      "active": true
+    },
+    {
+      "id": "yna_economy",
+      "name": "연합뉴스 경제",
+      "category": "news_kr",
+      "url": "https://www.yna.co.kr/economy/index",
+      "rss": "https://www.yna.co.kr/rss/economy.xml",
+      "trust_score": 9,
+      "active": true
+    },
+    {
+      "id": "aitimes_kr",
+      "name": "AI타임스",
+      "category": "news_kr",
+      "url": "https://www.aitimes.com/",
+      "rss": "https://www.aitimes.com/rss/allArticle.xml",
+      "trust_score": 8,
+      "active": true
+    },
+    {
+      "id": "mk_it",
+      "name": "매일경제 IT",
+      "category": "news_kr",
+      "url": "https://www.mk.co.kr/news/it/",
+      "rss": "https://www.mk.co.kr/rss/30000001/",
+      "trust_score": 8,
+      "active": true
     }
   ],
   "blocked_domains": [
     "spam-news.com"
-  ],
-  "keywords_ai": [
-    "AI", "artificial intelligence", "machine learning", "LLM", "GPT",
-    "Claude", "neural network", "deep learning", "model", "AGI",
-    "인공지능", "머신러닝", "딥러닝", "챗봇", "chatbot"
-  ],
-  "keywords_tech": [
-    "chip", "semiconductor", "quantum", "robot", "drone", "biotech",
-    "battery", "EV", "space", "cloud", "5G", "6G", "AR", "VR",
-    "반도체", "양자", "로봇", "배터리", "우주", "클라우드"
-  ],
-  "keywords_security": [
-    "vulnerability", "breach", "exploit", "ransomware", "CVE", "zero-day",
-    "hack", "malware", "phishing", "DDoS", "data leak", "patch",
-    "취약점", "해킹", "랜섬웨어", "보안", "침해", "악성코드"
-  ],
-  "keywords_blocked": [
-    "casino", "crypto pump", "NFT drop", "giveaway scam"
   ]
 }
