@@ -321,7 +321,7 @@ footer{text-align:center;padding:28px;color:var(--td);font-family:var(--mono);
          id="card-{{ loop.index }}"
          data-sections='{{ (item.matched_sections | default([])) | tojson }}'
          data-focus='{{ (item.matched_focus | default([])) | tojson }}'
-         data-category="{{ item.category }}"
+         data-category="{{ item.category }}">
       <div class="card-top">
         <div class="card-meta">
           <span class="badge-src">{{ item.source_name }}</span>
