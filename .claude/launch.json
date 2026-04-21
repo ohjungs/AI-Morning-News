@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "morning-news-preview",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "3939", "--directory", "output"],
+      "port": 3939
+    }
+  ]
+}

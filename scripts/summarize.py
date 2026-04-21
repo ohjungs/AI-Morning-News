@@ -13,11 +13,18 @@ DATA_DIR = BASE_DIR / "data"
 sys.path.insert(0, str(Path(__file__).parent))
 
 from utils.logger import setup_logger
+from utils.keywords import load_focus_topics
 log = setup_logger(__name__)
 
 MAX_ITEMS = 50  # 30 → 50으로 확장
 RETRY_COUNT = 2
 RETRY_DELAY = 3
+
+FOCUS_CONTEXT_TEMPLATE = """[오늘의 중점 주제]
+{topics}
+위 주제와 관련된 내용이 기사에 있다면 요약에서 그 관점을 강조해줘.
+
+"""
 
 PROMPT_TEMPLATE = """다음 뉴스 기사들을 각각 한국어로 요약해줘.
 각 기사마다 반드시:
@@ -129,19 +136,28 @@ def parse_summaries(response: str, count: int) -> list:
         log.error(f"요약 파싱 실패: {e}\n원본: {response[:300]}")
         return [{"title_ko": "", "summary": "요약 생성 실패"}] * count
 
+def build_focus_context() -> str:
+    topics = load_focus_topics()
+    if not topics:
+        return ""
+    lines = "\n".join(f"- {t['name']}: {t['detail']}" for t in topics)
+    return FOCUS_CONTEXT_TEMPLATE.format(topics=lines)
+
+
 def summarize(items: list) -> list:
     model_cfg = load_model_config()
     model = model_cfg.get("summarize")
     log.info(f"요약 모델: {model}")
 
+    focus_context = build_focus_context()
     items = items[:MAX_ITEMS]
-    batch_size = 5  # 배치 크기 줄여서 프롬프트 길이 제한
+    batch_size = 5
     all_summaries = []
 
     for i in range(0, len(items), batch_size):
         batch = items[i:i+batch_size]
         news_list = build_news_list(batch)
-        prompt = PROMPT_TEMPLATE.format(news_list=news_list)
+        prompt = focus_context + PROMPT_TEMPLATE.format(news_list=news_list)
 
         log.info(f"요약 요청: {i}~{i+len(batch)-1}번 기사")
         response = call_claude_cli(prompt, model=model)

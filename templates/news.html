@@ -5,243 +5,417 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Morning News — {{ date }}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet"></noscript>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#0e0e10;
-  --s1:#161618;
-  --s2:#1e1e22;
-  --b:#2a2a30;
-  --b2:#38383f;
-  --tx:#e2e2ea;
-  --tm:#8888a0;
-  --tc:#55556a;
-  --ac:#c8b8ff;
-  --ac2:#7ee8d4;
-  --high:#ff7070;
-  --med:#ffd06b;
-  --low:#6bd98a;
+  --bg:#09090e;--s1:#111119;--s2:#18181f;--s3:#1f1f28;
+  --b:#22222e;--b2:#2e2e3e;--b3:#3a3a4e;
+  --tx:#e4e4f0;--tm:#9090b0;--td:#5a5a78;
+  --ac:#7c6aff;--ac2:#00d4b1;--ac3:#ff7e67;
+  --high:#ff5f7e;--med:#ffb347;--low:#51cf66;
   --mono:'IBM Plex Mono',monospace;
   --sans:'Noto Sans KR',sans-serif;
+  --focus-colors:#7c6aff,#00d4b1,#ff7e67,#4fc3f7,#ce93d8,#81c784;
 }
 [data-theme="light"]{
-  --bg:#f5f5f0;
-  --s1:#ffffff;
-  --s2:#f0f0ec;
-  --b:#d8d8d0;
-  --b2:#c0c0b8;
-  --tx:#1a1a1e;
-  --tm:#555560;
-  --tc:#888890;
-  --ac:#5a4fcf;
-  --ac2:#0f9880;
+  --bg:#f4f4f0;--s1:#ffffff;--s2:#f0f0ec;--s3:#e8e8e4;
+  --b:#d8d8d0;--b2:#c4c4bc;--b3:#b0b0a8;
+  --tx:#1a1a24;--tm:#505068;--td:#909098;
+  --ac:#5a48ee;--ac2:#009980;--ac3:#e05a40;
 }
-body{background:var(--bg);color:var(--tx);font-family:var(--sans);font-weight:400;line-height:1.7;min-height:100vh;transition:background .2s,color .2s}
-header{background:var(--s1);border-bottom:0.5px solid var(--b);padding:18px 28px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
-.logo{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--ac);letter-spacing:2px}
-.logo span{color:var(--tm);font-weight:400}
-.hdate{font-family:var(--mono);font-size:11px;color:var(--tc);margin-top:3px}
+body{background:var(--bg);color:var(--tx);font-family:var(--sans);font-weight:400;line-height:1.7;min-height:100vh;transition:background .25s,color .25s}
+
+/* ── HEADER ── */
+header{
+  background:var(--s1);border-bottom:1px solid var(--b);
+  padding:14px 28px;display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:200;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+}
+.logo{font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:3px;
+  background:linear-gradient(90deg,var(--ac),var(--ac2));-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;background-clip:text}
+.hdate{font-family:var(--mono);font-size:10px;color:var(--td);margin-top:3px;letter-spacing:.5px}
 .hright{display:flex;align-items:center;gap:10px}
-.badge{font-family:var(--mono);font-size:10px;color:var(--tm);background:var(--s2);border:0.5px solid var(--b);padding:3px 10px;border-radius:20px}
-.theme-btn{background:var(--s2);border:0.5px solid var(--b);color:var(--tm);padding:5px 12px;border-radius:6px;cursor:pointer;font-size:12px;font-family:var(--mono);transition:border-color .2s,color .2s}
+.total-badge{font-family:var(--mono);font-size:11px;color:var(--tm);
+  background:var(--s2);border:1px solid var(--b);padding:4px 12px;border-radius:20px}
+.theme-btn{background:var(--s2);border:1px solid var(--b);color:var(--tm);
+  padding:6px 14px;border-radius:8px;cursor:pointer;font-size:12px;font-family:var(--mono);
+  transition:all .2s;letter-spacing:.3px}
 .theme-btn:hover{border-color:var(--ac);color:var(--ac)}
-.tabs{background:var(--s1);border-bottom:0.5px solid var(--b);padding:0 28px;display:flex;gap:0;overflow-x:auto}
-.tab{padding:10px 18px;font-size:12px;font-family:var(--mono);color:var(--tc);border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all .2s;letter-spacing:.5px}
+
+/* ── TODAY'S FOCUS ── */
+.focus-section{
+  background:linear-gradient(180deg,var(--s1) 0%,var(--bg) 100%);
+  border-bottom:1px solid var(--b);padding:20px 28px 24px;
+}
+.focus-header{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.focus-label{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:2px;
+  color:var(--ac);display:flex;align-items:center;gap:6px}
+.focus-label::before{content:'';display:inline-block;width:6px;height:6px;
+  border-radius:50%;background:var(--ac);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+.focus-count{font-family:var(--mono);font-size:10px;color:var(--td);
+  background:var(--s2);padding:2px 8px;border-radius:10px;border:1px solid var(--b)}
+.focus-scroll{display:flex;gap:14px;overflow-x:auto;padding-bottom:4px;
+  scrollbar-width:thin;scrollbar-color:var(--b) transparent}
+.focus-scroll::-webkit-scrollbar{height:4px}
+.focus-scroll::-webkit-scrollbar-track{background:transparent}
+.focus-scroll::-webkit-scrollbar-thumb{background:var(--b2);border-radius:2px}
+.focus-card{
+  flex:0 0 280px;background:var(--s2);border:1px solid var(--b);
+  border-radius:12px;padding:16px;position:relative;overflow:hidden;
+  transition:border-color .2s,transform .2s;cursor:default;
+}
+.focus-card:hover{transform:translateY(-2px);border-color:var(--b2)}
+.focus-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--fc, var(--ac))}
+.focus-card[data-idx="0"]{--fc:#7c6aff}
+.focus-card[data-idx="1"]{--fc:#00d4b1}
+.focus-card[data-idx="2"]{--fc:#ff7e67}
+.focus-card[data-idx="3"]{--fc:#4fc3f7}
+.focus-card[data-idx="4"]{--fc:#ce93d8}
+.focus-card[data-idx="5"]{--fc:#81c784}
+.fc-name{font-size:14px;font-weight:700;color:var(--tx);margin-bottom:6px;
+  display:flex;align-items:center;gap:6px}
+.fc-dot{width:7px;height:7px;border-radius:50%;background:var(--fc, var(--ac));flex-shrink:0}
+.fc-detail{font-size:11px;color:var(--tm);line-height:1.6;margin-bottom:12px}
+.fc-count{font-family:var(--mono);font-size:10px;color:var(--fc, var(--ac));
+  margin-bottom:10px;letter-spacing:.3px}
+.fc-divider{height:1px;background:var(--b);margin-bottom:10px}
+.fc-article{font-size:11px;color:var(--tm);padding:4px 0;
+  border-bottom:1px solid var(--b);line-height:1.45}
+.fc-article:last-child{border-bottom:none}
+.fc-article a{color:var(--tx);text-decoration:none;transition:color .2s}
+.fc-article a:hover{color:var(--fc, var(--ac))}
+.fc-article::before{content:'↗ ';color:var(--fc, var(--ac));font-size:10px}
+.fc-empty{font-family:var(--mono);font-size:10px;color:var(--td);font-style:italic}
+
+/* ── TAB BAR ── */
+.tab-bar{
+  background:var(--s1);border-bottom:1px solid var(--b);
+  padding:0 20px;display:flex;gap:0;overflow-x:auto;
+  position:sticky;top:53px;z-index:190;
+  scrollbar-width:none;
+}
+.tab-bar::-webkit-scrollbar{display:none}
+.tab{
+  padding:11px 16px;font-family:var(--mono);font-size:11px;color:var(--td);
+  background:none;border:none;cursor:pointer;
+  border-bottom:2px solid transparent;white-space:nowrap;
+  transition:all .2s;letter-spacing:.5px;display:flex;align-items:center;gap:5px;
+}
 .tab:hover{color:var(--tm)}
 .tab.on{color:var(--ac);border-bottom-color:var(--ac)}
-.tab .n{font-size:10px;margin-left:4px;background:var(--s2);padding:1px 5px;border-radius:8px;color:var(--tc)}
-main{max-width:860px;margin:0 auto;padding:24px 28px}
-.sec{display:none}.sec.on{display:block}
-.list{display:flex;flex-direction:column;gap:10px}
-.card{background:var(--s1);border:0.5px solid var(--b);border-radius:8px;padding:16px 18px;transition:border-color .2s,opacity .2s;animation:fadeup .3s ease both}
-@keyframes fadeup{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.card:hover{border-color:var(--b2)}
-.card.read{opacity:.38}
-.ctop{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:10px}
-.cmeta{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.src{font-family:var(--mono);font-size:10px;color:var(--ac2);background:rgba(126,232,212,.08);padding:2px 7px;border-radius:3px;letter-spacing:.3px}
-.cat{font-family:var(--mono);font-size:9px;color:var(--tc);background:var(--s2);padding:2px 6px;border-radius:3px;text-transform:uppercase;letter-spacing:.8px}
-.pri{font-family:var(--mono);font-size:9px;font-weight:700;padding:2px 7px;border-radius:3px;letter-spacing:.5px}
-.ph{background:rgba(255,112,112,.12);color:var(--high)}
-.pm{background:rgba(255,208,107,.12);color:var(--med)}
-.pl{background:rgba(107,217,138,.12);color:var(--low)}
-.rbtn{background:none;border:0.5px solid var(--b);color:var(--tc);font-family:var(--mono);font-size:10px;padding:3px 9px;border-radius:4px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .2s}
-.rbtn:hover{border-color:var(--ac);color:var(--ac)}
-.card.read .rbtn{color:var(--ac);border-color:var(--ac)}
-.ctitle{font-size:14px;font-weight:500;margin-bottom:8px;line-height:1.45}
-.ctitle a{color:var(--tx);text-decoration:none;transition:color .2s}
-.ctitle a:hover{color:var(--ac)}
-.csummary{font-size:12px;color:var(--tm);line-height:1.75;white-space:pre-line}
-.cfoot{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:10px;border-top:0.5px solid var(--b)}
-.cdate{font-family:var(--mono);font-size:10px;color:var(--tc)}
-.orig{font-family:var(--mono);font-size:10px;color:var(--ac);text-decoration:none;letter-spacing:.3px;transition:opacity .2s}
-.orig:hover{opacity:.6}
-.empty{text-align:center;color:var(--tc);padding:60px 0;font-size:12px;font-family:var(--mono)}
-footer{text-align:center;padding:28px;color:var(--tc);font-family:var(--mono);font-size:10px;border-top:0.5px solid var(--b);margin-top:32px;letter-spacing:.5px}
-/* Advisor */
-.advisor{background:var(--s1);border:0.5px solid var(--b);border-radius:10px;padding:20px 24px;margin-bottom:20px;position:relative;overflow:hidden}
-.advisor::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--ac),var(--ac2))}
+.tab-n{font-size:9px;background:var(--s2);padding:1px 5px;border-radius:8px;color:var(--td);min-width:16px;text-align:center}
+.tab.on .tab-n{background:rgba(124,106,255,.15);color:var(--ac)}
+.tab-focus.on{color:var(--ac2);border-bottom-color:var(--ac2)}
+.tab-focus.on .tab-n{background:rgba(0,212,177,.15);color:var(--ac2)}
+
+/* ── MAIN ── */
+main{max-width:880px;margin:0 auto;padding:24px 28px 48px}
+@media(max-width:640px){header,main{padding-left:16px;padding-right:16px}
+  .tab-bar{padding-left:12px}.focus-section{padding-left:16px;padding-right:16px}}
+
+/* ── ADVISOR ── */
+.advisor{
+  background:var(--s1);border:1px solid var(--b);border-radius:12px;
+  padding:20px 24px;margin-bottom:20px;position:relative;overflow:hidden;
+}
+.advisor::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--ac),var(--ac2),var(--ac3))}
 .adv-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .adv-label{font-family:var(--mono);font-size:10px;color:var(--ac);letter-spacing:2px;font-weight:700}
-.adv-model{font-family:var(--mono);font-size:9px;color:var(--tc);background:var(--s2);padding:2px 8px;border-radius:10px}
-.adv-oneline{font-size:14px;font-weight:500;color:var(--tx);margin-bottom:16px;line-height:1.5;padding:10px 14px;background:var(--s2);border-radius:6px;border-left:3px solid var(--ac)}
-.adv-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.adv-model{font-family:var(--mono);font-size:9px;color:var(--td);
+  background:var(--s2);padding:2px 8px;border-radius:10px;border:1px solid var(--b)}
+.adv-oneline{font-size:14px;font-weight:500;color:var(--tx);margin-bottom:16px;
+  line-height:1.6;padding:12px 16px;background:var(--s2);border-radius:8px;
+  border-left:3px solid var(--ac)}
+.adv-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 @media(max-width:600px){.adv-grid{grid-template-columns:1fr}}
-.adv-block{background:var(--s2);border-radius:6px;padding:12px 14px}
-.adv-block-title{font-family:var(--mono);font-size:9px;color:var(--tc);letter-spacing:1px;margin-bottom:8px;text-transform:uppercase}
-.trend-item{margin-bottom:8px;padding-bottom:8px;border-bottom:0.5px solid var(--b)}
-.trend-item:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
-.trend-rank{font-family:var(--mono);font-size:9px;color:var(--ac);font-weight:700;margin-right:5px}
-.trend-theme{font-size:12px;font-weight:500;color:var(--tx)}
-.trend-desc{font-size:11px;color:var(--tm);margin-top:3px;line-height:1.55}
-.adv-spotlight{font-size:12px;color:var(--tx)}
+.adv-block{background:var(--s2);border-radius:8px;padding:14px 16px;border:1px solid var(--b)}
+.adv-block-title{font-family:var(--mono);font-size:9px;color:var(--td);
+  letter-spacing:1.5px;margin-bottom:10px;text-transform:uppercase}
+.trend-item{margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--b)}
+.trend-item:last-child{margin:0;padding:0;border:none}
+.trend-rank{font-family:var(--mono);font-size:9px;color:var(--ac);font-weight:700;margin-right:6px}
+.trend-theme{font-size:12px;font-weight:500}
+.trend-desc{font-size:11px;color:var(--tm);margin-top:3px;line-height:1.5}
 .adv-spotlight strong{color:var(--ac2)}
-.adv-watchout{font-size:12px;color:var(--tx);line-height:1.55}
-.adv-sentiment{display:flex;align-items:center;gap:8px}
-.sent-badge{font-family:var(--mono);font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;text-transform:uppercase}
-.sent-bullish{background:rgba(107,217,138,.15);color:var(--low)}
-.sent-bearish{background:rgba(255,112,112,.15);color:var(--high)}
-.sent-neutral{background:rgba(136,136,160,.12);color:var(--tm)}
-.sent-reason{font-size:11px;color:var(--tm)}
-@media(max-width:600px){header,main{padding-left:16px;padding-right:16px}.tabs{padding-left:16px}.logo{font-size:11px}}
+.adv-spotlight,.adv-watchout{font-size:12px;color:var(--tx);line-height:1.6}
+.sent-badge{font-family:var(--mono);font-size:10px;font-weight:700;
+  padding:3px 10px;border-radius:4px;text-transform:uppercase}
+.sent-bullish{background:rgba(81,207,102,.15);color:var(--low)}
+.sent-bearish{background:rgba(255,95,126,.15);color:var(--high)}
+.sent-neutral{background:rgba(144,144,176,.12);color:var(--tm)}
+.sent-reason{font-size:11px;color:var(--tm);margin-top:6px;line-height:1.5}
+
+/* ── ARTICLE LIST ── */
+.article-list{display:flex;flex-direction:column;gap:10px}
+.card{
+  background:var(--s1);border:1px solid var(--b);border-radius:10px;
+  padding:16px 18px;transition:border-color .2s;
+  animation:fadeup .3s ease both;
+}
+@keyframes fadeup{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.card:hover{border-color:var(--b2)}
+.card.read{opacity:.35}
+.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:10px}
+.card-meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.badge-src{font-family:var(--mono);font-size:10px;color:var(--ac2);
+  background:rgba(0,212,177,.08);border:1px solid rgba(0,212,177,.2);
+  padding:2px 8px;border-radius:4px;letter-spacing:.2px}
+.badge-cat{font-family:var(--mono);font-size:9px;color:var(--td);
+  background:var(--s2);padding:2px 6px;border-radius:4px;
+  text-transform:uppercase;letter-spacing:.8px}
+.badge-pri{font-family:var(--mono);font-size:9px;font-weight:700;
+  padding:2px 7px;border-radius:4px;letter-spacing:.5px}
+.pri-high{background:rgba(255,95,126,.12);color:var(--high)}
+.pri-med{background:rgba(255,179,71,.12);color:var(--med)}
+.pri-low{background:rgba(81,207,102,.1);color:var(--low)}
+.badge-focus{font-family:var(--mono);font-size:9px;padding:2px 7px;border-radius:4px;
+  background:rgba(124,106,255,.12);color:var(--ac);border:1px solid rgba(124,106,255,.25)}
+.read-btn{background:none;border:1px solid var(--b);color:var(--td);
+  font-family:var(--mono);font-size:10px;padding:3px 10px;border-radius:6px;
+  cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .2s}
+.read-btn:hover{border-color:var(--ac);color:var(--ac)}
+.card.read .read-btn{border-color:var(--ac);color:var(--ac)}
+.card-title{font-size:14px;font-weight:500;margin-bottom:8px;line-height:1.5}
+.card-title a{color:var(--tx);text-decoration:none;transition:color .2s}
+.card-title a:hover{color:var(--ac)}
+.card-summary{font-size:12px;color:var(--tm);line-height:1.8;white-space:pre-line}
+.card-foot{display:flex;align-items:center;justify-content:space-between;
+  margin-top:12px;padding-top:10px;border-top:1px solid var(--b)}
+.card-date{font-family:var(--mono);font-size:10px;color:var(--td)}
+.card-link{font-family:var(--mono);font-size:10px;color:var(--ac);
+  text-decoration:none;letter-spacing:.3px;transition:opacity .2s}
+.card-link:hover{opacity:.6}
+
+/* ── EMPTY STATE ── */
+.empty{text-align:center;padding:60px 0;color:var(--td);font-family:var(--mono);font-size:12px}
+
+/* ── FOOTER ── */
+footer{text-align:center;padding:28px;color:var(--td);font-family:var(--mono);
+  font-size:10px;border-top:1px solid var(--b);letter-spacing:.8px}
 </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
   <div>
-    <div class="logo">AI<span>///</span>MORNING<span>///</span>NEWS</div>
-    <div class="hdate">{{ date }} · {{ weekday }} · 08:00 자동 실행</div>
+    <div class="logo">AI&nbsp;///&nbsp;MORNING&nbsp;///&nbsp;NEWS</div>
+    <div class="hdate">{{ date }} &middot; {{ weekday }} &middot; AUTO PIPELINE</div>
   </div>
   <div class="hright">
-    <span class="badge">{{ total }}건</span>
-    <button class="theme-btn" onclick="toggleTheme()">☀ / ☾</button>
+    <span class="total-badge">{{ total }}건</span>
+    <button class="theme-btn" onclick="toggleTheme()">◐ 테마</button>
   </div>
 </header>
 
-<div class="tabs">
-  <button class="tab on" onclick="sw('all',this)">ALL <span class="n">{{ total }}</span></button>
-  <button class="tab" onclick="sw('official',this)">OFFICIAL <span class="n">{{ counts.official }}</span></button>
-  <button class="tab" onclick="sw('news',this)">NEWS <span class="n">{{ counts.news }}</span></button>
-  <button class="tab" onclick="sw('tech',this)">TECH <span class="n">{{ counts.tech }}</span></button>
-  <button class="tab" onclick="sw('security',this)">SECURITY <span class="n">{{ counts.security }}</span></button>
-  <button class="tab" onclick="sw('research',this)">RESEARCH <span class="n">{{ counts.research }}</span></button>
-  <button class="tab" onclick="sw('blog',this)">BLOG <span class="n">{{ counts.blog }}</span></button>
-  <button class="tab" onclick="sw('influencer',this)">INFLUENCER <span class="n">{{ counts.influencer }}</span></button>
-</div>
-
-<main>
-{% if advisor and advisor.one_line %}
-<div class="advisor">
-  <div class="adv-header">
-    <span class="adv-label">⬡ ADVISOR</span>
-    <span class="adv-model">{{ advisor.model or '' }}</span>
+<!-- TODAY'S FOCUS -->
+{% if focus_articles %}
+<section class="focus-section">
+  <div class="focus-header">
+    <span class="focus-label">TODAY'S FOCUS</span>
+    <span class="focus-count">{{ focus_articles|length }}개 주제</span>
   </div>
-  <div class="adv-oneline">{{ advisor.one_line }}</div>
-  <div class="adv-grid">
-    {% if advisor.top_trends %}
-    <div class="adv-block" style="grid-column:1/-1">
-      <div class="adv-block-title">TOP TRENDS</div>
-      {% for t in advisor.top_trends %}
-      <div class="trend-item">
-        <div><span class="trend-rank">#{{ t.rank }}</span><span class="trend-theme">{{ t.theme }}</span></div>
-        <div class="trend-desc">{{ t.desc }}</div>
+  <div class="focus-scroll">
+    {% for fa in focus_articles %}
+    <div class="focus-card" data-idx="{{ loop.index0 }}">
+      <div class="fc-name">
+        <span class="fc-dot"></span>{{ fa.topic.name }}
+      </div>
+      <div class="fc-detail">{{ fa.topic.detail }}</div>
+      <div class="fc-count">
+        {% if fa.articles|length > 0 %}{{ fa.articles|length }}건 매칭{% else %}매칭 기사 없음{% endif %}
+      </div>
+      {% if fa.articles %}
+      <div class="fc-divider"></div>
+      {% for art in fa.articles %}
+      <div class="fc-article">
+        <a href="{{ art.url }}" target="_blank" rel="noopener">
+          {{ art.title_ko if art.title_ko else art.title }}
+        </a>
       </div>
       {% endfor %}
+      {% else %}
+      <div class="fc-empty">관련 기사를 찾지 못했습니다</div>
+      {% endif %}
     </div>
-    {% endif %}
-    {% if advisor.spotlight %}
-    <div class="adv-block">
-      <div class="adv-block-title">SPOTLIGHT</div>
-      <div class="adv-spotlight"><strong>{{ advisor.spotlight.company }}</strong><br>{{ advisor.spotlight.reason }}</div>
-    </div>
-    {% endif %}
-    <div class="adv-block">
-      <div class="adv-block-title">SENTIMENT</div>
-      <div class="adv-sentiment">
-        <span class="sent-badge sent-{{ advisor.sentiment }}">{{ advisor.sentiment }}</span>
-      </div>
-      <div class="sent-reason" style="margin-top:6px">{{ advisor.sentiment_reason }}</div>
-    </div>
-    {% if advisor.watchout %}
-    <div class="adv-block" style="grid-column:1/-1">
-      <div class="adv-block-title">WATCH OUT</div>
-      <div class="adv-watchout">{{ advisor.watchout }}</div>
-    </div>
-    {% endif %}
+    {% endfor %}
   </div>
-</div>
+</section>
 {% endif %}
-{% for cat in ['all', 'official', 'news', 'tech', 'security', 'research', 'blog', 'influencer'] %}
-<div class="sec {% if cat == 'all' %}on{% endif %}" id="sec-{{ cat }}">
-  <div class="list">
-  {% set ns = namespace(found=false) %}
-  {% for item in items %}
-    {% if cat == 'all' or item.category == cat %}
-    {% set ns.found = true %}
-    <div class="card" id="card-{{ loop.index }}">
-      <div class="ctop">
-        <div class="cmeta">
-          <span class="src">{{ item.source_name }}</span>
-          <span class="cat">{{ item.category }}</span>
-          <span class="pri {% if item.priority == 'high' %}ph{% elif item.priority == 'medium' %}pm{% else %}pl{% endif %}">{{ item.priority | upper }}</span>
+
+<!-- TAB BAR -->
+<div class="tab-bar" id="tabbar">
+  <button class="tab on" data-tab="all" onclick="sw('all',this)">
+    ALL <span class="tab-n">{{ total }}</span>
+  </button>
+  {% for section in tab_sections %}
+  {% set cnt = section_counts.get(section, 0) %}
+  {% if cnt > 0 %}
+  <button class="tab" data-tab="{{ section }}" onclick="sw('{{ section }}',this)">
+    {{ section }} <span class="tab-n">{{ cnt }}</span>
+  </button>
+  {% endif %}
+  {% endfor %}
+  {% if focus_total > 0 %}
+  <button class="tab tab-focus" data-tab="중점주제" onclick="sw('중점주제',this)">
+    ★ 중점주제 <span class="tab-n">{{ focus_total }}</span>
+  </button>
+  {% endif %}
+</div>
+
+<!-- MAIN -->
+<main>
+  <!-- ADVISOR (ALL 탭에서만 표시) -->
+  {% if advisor and advisor.one_line %}
+  <div class="advisor" id="advisor-block">
+    <div class="adv-header">
+      <span class="adv-label">⬡ ADVISOR</span>
+      <span class="adv-model">{{ advisor.model or '' }}</span>
+    </div>
+    <div class="adv-oneline">{{ advisor.one_line }}</div>
+    <div class="adv-grid">
+      {% if advisor.top_trends %}
+      <div class="adv-block" style="grid-column:1/-1">
+        <div class="adv-block-title">TOP TRENDS</div>
+        {% for t in advisor.top_trends %}
+        <div class="trend-item">
+          <div><span class="trend-rank">#{{ t.rank }}</span><span class="trend-theme">{{ t.theme }}</span></div>
+          <div class="trend-desc">{{ t.desc }}</div>
         </div>
-        <button class="rbtn" onclick="rd('card-{{ loop.index }}',this)">읽음</button>
+        {% endfor %}
       </div>
-      <div class="ctitle">
-        <a href="{{ item.url }}" target="_blank" rel="noopener">{{ item.title_ko if item.title_ko else item.title }}</a>
+      {% endif %}
+      {% if advisor.spotlight %}
+      <div class="adv-block">
+        <div class="adv-block-title">SPOTLIGHT</div>
+        <div class="adv-spotlight"><strong>{{ advisor.spotlight.company }}</strong><br>{{ advisor.spotlight.reason }}</div>
       </div>
-      <div class="csummary">{{ item.summary_ko }}</div>
-      <div class="cfoot">
-        <span class="cdate">{{ item.published[:10] if item.published else '' }}</span>
-        <a class="orig" href="{{ item.url }}" target="_blank" rel="noopener">원문 보기 →</a>
+      {% endif %}
+      <div class="adv-block">
+        <div class="adv-block-title">SENTIMENT</div>
+        <span class="sent-badge sent-{{ advisor.sentiment }}">{{ advisor.sentiment }}</span>
+        <div class="sent-reason">{{ advisor.sentiment_reason }}</div>
+      </div>
+      {% if advisor.watchout %}
+      <div class="adv-block" style="grid-column:1/-1">
+        <div class="adv-block-title">WATCH OUT</div>
+        <div class="adv-watchout">{{ advisor.watchout }}</div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- ARTICLE CARDS -->
+  <div class="article-list" id="article-list">
+    {% for item in items %}
+    <div class="card"
+         id="card-{{ loop.index }}"
+         data-sections='{{ (item.matched_sections | default([])) | tojson }}'
+         data-focus='{{ (item.matched_focus | default([])) | tojson }}'
+         data-category="{{ item.category }}"
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="badge-src">{{ item.source_name }}</span>
+          <span class="badge-cat">{{ item.category }}</span>
+          <span class="badge-pri pri-{{ 'high' if item.priority == 'high' else ('med' if item.priority == 'medium' else 'low') }}">
+            {{ item.priority | upper }}
+          </span>
+          {% for fn in item.matched_focus %}
+          <span class="badge-focus">★ {{ fn }}</span>
+          {% endfor %}
+        </div>
+        <button class="read-btn" onclick="rd('card-{{ loop.index }}',this)">읽음</button>
+      </div>
+      <div class="card-title">
+        <a href="{{ item.url }}" target="_blank" rel="noopener">
+          {{ item.title_ko if item.title_ko else item.title }}
+        </a>
+      </div>
+      <div class="card-summary">{{ item.summary_ko }}</div>
+      <div class="card-foot">
+        <span class="card-date">{{ item.published[:10] if item.published else '' }}</span>
+        <a class="card-link" href="{{ item.url }}" target="_blank" rel="noopener">원문 보기 →</a>
       </div>
     </div>
-    {% endif %}
-  {% endfor %}
-  {% if not ns.found %}
-    <div class="empty">해당 카테고리의 뉴스가 없습니다.</div>
-  {% endif %}
+    {% endfor %}
   </div>
-</div>
-{% endfor %}
+
+  <div class="empty" id="empty-state" style="display:none">
+    해당 탭에 기사가 없습니다.
+  </div>
 </main>
 
-<footer>MORNING·NEWS · AUTO·GENERATED · {{ date }} · POWERED·BY·CLAUDE·CODE</footer>
+<footer>MORNING · NEWS &nbsp;·&nbsp; AUTO·GENERATED &nbsp;·&nbsp; {{ date }} &nbsp;·&nbsp; POWERED BY CLAUDE</footer>
 
 <script>
-function sw(cat,el){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
-  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
-  el.classList.add('on');
-  document.getElementById('sec-'+cat).classList.add('on');
+let currentTab = 'all';
+
+function sw(tabName, btn) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('on'));
+  btn.classList.add('on');
+  currentTab = tabName;
+
+  let visible = 0;
+  document.querySelectorAll('.card').forEach(card => {
+    const sections = JSON.parse(card.dataset.sections || '[]');
+    const focus    = JSON.parse(card.dataset.focus    || '[]');
+    const category = card.dataset.category || '';
+    let show = false;
+    if      (tabName === 'all')        show = true;
+    else if (tabName === '중점주제')    show = focus.length > 0;
+    else if (tabName === '국내 IT/AI') show = category === 'news_kr';
+    else                               show = sections.includes(tabName);
+    card.style.display = show ? '' : 'none';
+    if (show) visible++;
+  });
+
+  // Advisor: ALL 탭에서만
+  const adv = document.getElementById('advisor-block');
+  if (adv) adv.style.display = tabName === 'all' ? '' : 'none';
+
+  // 빈 상태
+  document.getElementById('empty-state').style.display = visible === 0 ? '' : 'none';
+
+  // 스크롤 to top of content
+  document.getElementById('article-list').scrollIntoView({behavior:'smooth', block:'nearest'});
 }
-function rd(id,btn){
-  const c=document.getElementById(id);
+
+function rd(id, btn) {
+  const c = document.getElementById(id);
   c.classList.toggle('read');
-  btn.textContent=c.classList.contains('read')?'읽음 ✓':'읽음';
-  try{
-    const ids=[];
-    document.querySelectorAll('.card.read').forEach(x=>ids.push(x.id));
-    localStorage.setItem('read_{{ date }}',JSON.stringify(ids));
-  }catch(e){}
+  btn.textContent = c.classList.contains('read') ? '읽음 ✓' : '읽음';
+  try {
+    const ids = [];
+    document.querySelectorAll('.card.read').forEach(x => ids.push(x.id));
+    localStorage.setItem('read_{{ date }}', JSON.stringify(ids));
+  } catch(e) {}
 }
-function toggleTheme(){
-  const r=document.getElementById('root');
-  r.dataset.theme=r.dataset.theme==='light'?'dark':'light';
-  try{localStorage.setItem('theme',r.dataset.theme);}catch(e){}
+
+function toggleTheme() {
+  const r = document.getElementById('root');
+  r.dataset.theme = r.dataset.theme === 'light' ? '' : 'light';
+  try { localStorage.setItem('theme', r.dataset.theme); } catch(e) {}
 }
-(function(){
-  try{
-    const t=localStorage.getItem('theme');
-    if(t) document.getElementById('root').dataset.theme=t;
-    const saved=localStorage.getItem('read_{{ date }}');
-    if(saved) JSON.parse(saved).forEach(id=>{
-      const c=document.getElementById(id);
-      if(c){c.classList.add('read');const b=c.querySelector('.rbtn');if(b)b.textContent='읽음 ✓';}
+
+(function init() {
+  try {
+    const theme = localStorage.getItem('theme');
+    if (theme) document.getElementById('root').dataset.theme = theme;
+    const saved = localStorage.getItem('read_{{ date }}');
+    if (saved) JSON.parse(saved).forEach(id => {
+      const c = document.getElementById(id);
+      if (c) { c.classList.add('read'); const b = c.querySelector('.read-btn'); if (b) b.textContent = '읽음 ✓'; }
     });
-  }catch(e){}
+  } catch(e) {}
 })();
 </script>
 </body>

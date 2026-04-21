@@ -47,7 +47,8 @@ echo ========================================
 
 :: 날짜를 Python으로 구해서 로케일 의존성 제거
 for /f %%i in ('%PYTHON% -c "import datetime; print(datetime.date.today())"') do set TODAY=%%i
-start "" "output\%TODAY%.html"
+echo 브라우저 열기: output\%TODAY%.html
+start "" "%~dp0output\%TODAY%.html"
 goto :end
 
 :error
